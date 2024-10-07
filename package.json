@@ -1,0 +1,11 @@
+{
+  "name": "app-adm-productos-pern-ts",
+  "version": "1.0.0",
+  "description": "REST APIs con Express y Typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Milton Vergara Garcia @notlimdev",
+  "license": "ISC"
+}
