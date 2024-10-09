@@ -4,7 +4,9 @@ const server = express()
 
 //Routing
 server.get('/', (req, res) => {
-  res.send('Hola Mundo en Express')
+  const auth = true
+  res.send(auth)
 })
 
 export default server
+
