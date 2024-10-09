@@ -1,10 +1,12 @@
 import { Sequelize } from "sequelize";
+import dotenv from 'dotenv'
+dotenv.config()
 
-const db = new Sequelize('DBProductos', 'postgres', 'Milton123', {
-  host: 'localhost',  // O 'localhost' si es en tu máquina local
+
+const db = new Sequelize(process.env.NAME_DB, process.env.USER_NAME, process.env.PASSWORD, {
+  host: process.env.NAME_HOST,  // O 'localhost' si es en tu máquina local
   dialect: 'postgres',
   port: 5432,        // El puerto por defecto de PostgreSQL
-  logging: false,    // Opcional: desactiva el registro de consultas SQL
 });
 
 // Probar la conexión
