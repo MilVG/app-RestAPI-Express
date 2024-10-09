@@ -1,3 +1,4 @@
+import colors from "colors"
 import express from "express"
 import router from "./router"
 import db from "./config/db"
@@ -5,12 +6,10 @@ const server = express()
 
 async function conectionDB() {
   try {
-
     await db.sync()
-    console.log('conexione xitossa');
 
   } catch (error) {
-    console.log(error);
+    console.log(colors.yellow(error));
 
   }
 }
