@@ -1,13 +1,14 @@
 import colors from 'colors'
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
 import dotenv from 'dotenv'
 dotenv.config()
 
 
-const db = new Sequelize(process.env.NAME_DB, process.env.USER_NAME, process.env.PASSWORD, {
+const db = new Sequelize(process.env.NAME_BD, process.env.USER_NAME, process.env.PASSWORD, {
   host: process.env.NAME_HOST,  // O 'localhost' si es en tu máquina local
   dialect: 'postgres',
-  port: 5432,        // El puerto por defecto de PostgreSQL
+  port: 5432,
+  models: [__dirname + '/../models/**/*.ts']
 });
 
 // Probar la conexión
