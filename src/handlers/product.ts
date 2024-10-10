@@ -8,6 +8,7 @@ export const createProduct = async (req: Request, res: Response) => {
   await check('price')
     .isNumeric().withMessage('Valor no válido')
     .notEmpty().withMessage('el precio del Producto no puede ir vacio')
+    .custom(value => value > 0).withMessage('Precio no válido')
     .run(req)
 
   let errors = validationResult(req)
