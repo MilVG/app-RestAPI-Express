@@ -1,12 +1,16 @@
 import { Router } from "express"
 import { createProduct, getProductById, getProducts } from "./handlers/product"
-import { body } from "express-validator"
+import { body, param } from "express-validator"
 import { handleInputError } from "./middleware"
 const router = Router()
 
 //Routing
 router.get('/', getProducts)
-router.get('/:id', getProductById)
+router.get('/:id',
+  param('id').isInt().withMessage('ID no valido'),
+  handleInputError,
+  getProductById
+)
 
 router.post('/',
   body('name').notEmpty().withMessage('El nombre de Producto no puede ir vacio'),
