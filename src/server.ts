@@ -1,5 +1,5 @@
 import colors from "colors"
-import express from "express"
+import express, { Application } from "express"
 import router from "./router"
 import db from "./config/db"
 
@@ -15,7 +15,7 @@ async function conectionDB() {
 conectionDB()
 
 //Instancia de express
-const server = express()
+const server: Application = express()
 
 //lectura de datos en la terminal tipo json
 server.use(express.json())
