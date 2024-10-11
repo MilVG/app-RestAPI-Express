@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { createProduct, getProductById, getProducts, updateProductPatchAvailability, updateProductPut } from "./handlers/product"
+import { createProduct, deleteProduct, getProductById, getProducts, updateProductPatchAvailability, updateProductPut } from "./handlers/product"
 import { body, param } from "express-validator"
 import { handleInputError } from "./middleware"
 const router = Router()
@@ -40,8 +40,10 @@ router.patch('/:id',
   updateProductPatchAvailability
 )
 
-router.delete('/', (req, res) => {
-  res.json('Desde DELETE')
-})
+router.delete('/:id',
+  param('id').isInt().withMessage('ID no valido'),
+  handleInputError,
+  deleteProduct
+)
 
 export default router
