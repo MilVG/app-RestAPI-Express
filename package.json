@@ -4,7 +4,8 @@
   "description": "REST APIs con Express y Typescript",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec tsx src/index.ts"
+    "dev": "nodemon --exec tsx src/index.ts",
+    "test": "jest"
   },
   "author": "Milton Vergara Garcia @notlimdev",
   "license": "ISC",
