@@ -9,7 +9,7 @@ export const getProducts = async (req: Request, res: Response) => {
       order: [
         ['id', 'DESC']
       ],
-      limit: 3
+      attributes: { exclude: ['createdAt', 'updatedAt', 'availability'] }
     })
     res.json({ data: products })
   } catch (error) {
