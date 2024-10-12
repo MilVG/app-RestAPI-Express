@@ -8,13 +8,14 @@ const db = new Sequelize(process.env.NAME_BD, process.env.USER_NAME, process.env
   host: process.env.NAME_HOST,  // O 'localhost' si es en tu máquina local
   dialect: 'postgres',
   port: 5432,
-  models: [__dirname + '/../models/**/*.ts']
+  models: [__dirname + '/../models/**/*.ts'],
+  logging: false
 });
 
 // Probar la conexión
 db.authenticate()
   .then(() => {
-    console.log(colors.magenta.bold('Conexión establecida correctamente.'));
+    //console.log(colors.magenta.bold('Conexión establecida correctamente.'));
   })
   .catch(err => {
     console.error(colors.red.bold('No se pudo conectar a la base de datos:'), err);
