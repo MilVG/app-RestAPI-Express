@@ -1,6 +1,9 @@
 import request from "supertest";
 import server from "../../server";
 
+
+
+
 describe('POST /api/products', () => {
   it('should display validation errors', async () => {
     const response = await request(server).post('/api/products').send({})
@@ -166,5 +169,31 @@ describe('PUT /api/products/:id', () => {
 
     expect(response.status).not.toBe(400)
     expect(response.body).not.toHaveProperty('errors')
+  })
+})
+
+describe('DELETE /api/products/:id', () => {
+  it('should check a valid id', async () => {
+    const response = await request(server).delete('/api/products/not-valid-url')
+
+    expect(response.status).toBe(400)
+    expect(response.body).toHaveProperty('errors')
+    expect(response.body.errors[0].msg).toBe('ID no valido')
+  })
+  it('Should return a 404 response for a non-existent product', async () => {
+    const productId = 2000
+    const response = await request(server).delete(`/api/products/${productId}`)
+    expect(response.status).toBe(404)
+    expect(response.body.error).toBe('Producto no encontrado')
+    expect(response.status).not.toBe(200)
+  })
+
+  it('Should delete a product', async () => {
+    const response = await request(server).delete('/api/products/1')
+    expect(response.status).toBe(200)
+    expect(response.body.data).toBe("Producto Eliminado")
+
+    expect(response.status).not.toBe(404)
+    expect(response.status).not.toBe(400)
   })
 })
