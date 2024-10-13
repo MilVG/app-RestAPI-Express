@@ -3,12 +3,13 @@ import express, { Application } from "express"
 import router from "./router"
 import db from "./config/db"
 
-async function conectionDB() {
+export async function conectionDB() {
   try {
-    await db.sync()
 
+    await db.authenticate()
+    db.sync()
   } catch (error) {
-    console.log(colors.yellow(error));
+    console.log(colors.red.bold('Hubo un error al conectar a la BD'));
 
   }
 }

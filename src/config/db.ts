@@ -1,4 +1,4 @@
-import colors from 'colors'
+//import colors from 'colors'
 import { Sequelize } from "sequelize-typescript";
 import dotenv from 'dotenv'
 dotenv.config()
@@ -11,15 +11,6 @@ const db = new Sequelize(process.env.NAME_BD, process.env.USER_NAME, process.env
   models: [__dirname + '/../models/**/*.ts'],
   logging: false
 });
-
-// Probar la conexión
-db.authenticate()
-  .then(() => {
-    //console.log(colors.magenta.bold('Conexión establecida correctamente.'));
-  })
-  .catch(err => {
-    console.error(colors.red.bold('No se pudo conectar a la base de datos:'), err);
-  });
 
 export default db
 
