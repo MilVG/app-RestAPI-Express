@@ -178,6 +178,35 @@ router.put('/:id',
   updateProductPut
 )
 
+/**
+ * @swagger
+ *  /api/products/{id}:
+ *    patch:
+ *      summary: Update Product availability
+ *      tags:
+ *        - Products
+ *      description: Returns the updated availability
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          description: The ID of the product to retrieve
+ *          required: true
+ *          schema:
+ *            type: integer
+ *      responses:
+ *         201:
+ *           description: Successful response
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 $ref: '#/components/schemas/Product'
+ *         400:
+ *           description: bad Request - Invalid ID or Invalid input data
+ *         404:
+ *           description: Product not found
+
+*/
+
 router.patch('/:id',
   param('id').isInt().withMessage('ID no valido'),
   handleInputError,
