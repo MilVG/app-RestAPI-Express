@@ -28,6 +28,27 @@ const router = Router()
  *                description: The Proudct availability
  *                example: true  
 */
+
+/**
+ * @swagger
+ *  /api/products:
+ *    get:
+ *        summary: Get a list of products
+ *        tags:
+ *             - Products
+ *        description: Return a list of products
+ *        responses:
+ *            200:
+ *              description: Successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                        type: array
+ *                        items:
+ *                          $ref: '#/components/schemas/Product'
+*/
+
+
 //Routing
 router.get('/', getProducts)
 router.get('/:id',
