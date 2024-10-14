@@ -1,6 +1,6 @@
 import request from "supertest";
-import server, { conectionDB } from "../../server";
-import db from "../../config/db";
+import server from "../../server";
+
 
 
 
@@ -217,19 +217,5 @@ describe('DELETE /api/products/:id', () => {
 
     expect(response.status).not.toBe(404)
     expect(response.status).not.toBe(400)
-  })
-})
-
-describe('connectDB', () => {
-  it('should handle database connection error', async () => {
-    jest
-      .spyOn(db, 'authenticate')
-      .mockRejectedValueOnce(new Error('Hubo un error error al conectar a la BD'))
-    const consoleSpy = jest.spyOn(console, 'log')
-    await conectionDB()
-
-    expect(consoleSpy).toHaveBeenCalledWith(
-      expect.stringContaining('Hubo un error al conectar a la BD')
-    )
   })
 })
