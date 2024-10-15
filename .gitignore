@@ -13,6 +13,9 @@ dist-ssr
 *.local
 .env
 
+#testing plugins
+coverage
+
 #archivos http
 http
 *.http
