@@ -5,6 +5,7 @@ import swaggerUi from 'swagger-ui-express'
 import swaggerSpec, { swaggerUiOptions } from "./config/swagger"
 import router from "./router"
 import db from "./config/db"
+import morgan from 'morgan'
 
 export async function conectionDB() {
   try {
@@ -38,7 +39,7 @@ server.use(cors(corsOptions))
 //lectura de datos en la terminal tipo json
 server.use(express.json())
 
-
+server.use(morgan('combined'))
 server.use('/api/products', router)
 
 //Docs
