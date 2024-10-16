@@ -1,3 +1,4 @@
+import cors, { CorsOptions } from 'cors'
 import colors from "colors"
 import express, { Application } from "express"
 import swaggerUi from 'swagger-ui-express'
@@ -20,6 +21,20 @@ conectionDB()
 //Instancia de express
 const server: Application = express()
 
+//permitir conexiones
+const corsOptions: CorsOptions = {
+  origin: function (origin, callback) {
+    if (origin === process.env.FRONTEND_URL) {
+      callback(null, true)
+    } else {
+      callback(new Error('Error de Cors'))
+
+    }
+
+  }
+}
+
+server.use(cors(corsOptions))
 //lectura de datos en la terminal tipo json
 server.use(express.json())
 
