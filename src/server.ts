@@ -39,7 +39,7 @@ server.use(cors(corsOptions))
 //lectura de datos en la terminal tipo json
 server.use(express.json())
 
-server.use(morgan('combined'))
+server.use(morgan('dev'))
 server.use('/api/products', router)
 
 //Docs
